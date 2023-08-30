@@ -69,15 +69,19 @@ namespace ComPort
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transmitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAfterSendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endLİneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox_TxEndLine = new System.Windows.Forms.ToolStripComboBox();
+            this.dataFormatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox_TxDataFormat = new System.Windows.Forms.ToolStripComboBox();
             this.receiverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDataWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox_RxShowDataWith = new System.Windows.Forms.ToolStripComboBox();
             this.dataPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox3 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox_RxDataPosition = new System.Windows.Forms.ToolStripComboBox();
+            this.dataFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox_RxDataFormat = new System.Windows.Forms.ToolStripComboBox();
             this.multiplePortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.in1PortsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +106,7 @@ namespace ComPort
             this.CmbComPort.Name = "CmbComPort";
             this.CmbComPort.Size = new System.Drawing.Size(158, 33);
             this.CmbComPort.TabIndex = 0;
+            this.CmbComPort.DropDown += new System.EventHandler(this.CmbComPort_DropDown);
             // 
             // groupBox1
             // 
@@ -275,12 +280,14 @@ namespace ComPort
             // TxtDataOut
             // 
             this.TxtDataOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtDataOut.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.TxtDataOut.Location = new System.Drawing.Point(0, 0);
+            this.TxtDataOut.Multiline = true;
             this.TxtDataOut.Name = "TxtDataOut";
             this.TxtDataOut.Size = new System.Drawing.Size(411, 30);
             this.TxtDataOut.TabIndex = 5;
-            this.TxtDataOut.TextChanged += new System.EventHandler(this.TxtDataOut_TextChanged);
             this.TxtDataOut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtDataOut_KeyDown);
+            this.TxtDataOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDataOut_KeyPress);
             // 
             // serialPort1
             // 
@@ -310,11 +317,11 @@ namespace ComPort
             // TxtDataIn
             // 
             this.TxtDataIn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TxtDataIn.Location = new System.Drawing.Point(3, 70);
+            this.TxtDataIn.Location = new System.Drawing.Point(3, 62);
             this.TxtDataIn.Multiline = true;
             this.TxtDataIn.Name = "TxtDataIn";
             this.TxtDataIn.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtDataIn.Size = new System.Drawing.Size(499, 241);
+            this.TxtDataIn.Size = new System.Drawing.Size(499, 249);
             this.TxtDataIn.TabIndex = 5;
             this.TxtDataIn.WordWrap = false;
             this.TxtDataIn.TextChanged += new System.EventHandler(this.TxtDataIn_TextChanged);
@@ -450,7 +457,7 @@ namespace ComPort
             // showDataToolStripMenuItem
             // 
             this.showDataToolStripMenuItem.Name = "showDataToolStripMenuItem";
-            this.showDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.showDataToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.showDataToolStripMenuItem.Text = "Show Data";
             this.showDataToolStripMenuItem.Click += new System.EventHandler(this.showDataToolStripMenuItem_Click);
             // 
@@ -492,92 +499,135 @@ namespace ComPort
             // transmitterToolStripMenuItem
             // 
             this.transmitterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem,
-            this.endLİneToolStripMenuItem});
+            this.clearAfterSendToolStripMenuItem,
+            this.endLİneToolStripMenuItem,
+            this.dataFormatToolStripMenuItem1});
             this.transmitterToolStripMenuItem.Name = "transmitterToolStripMenuItem";
             this.transmitterToolStripMenuItem.Size = new System.Drawing.Size(111, 25);
             this.transmitterToolStripMenuItem.Text = "Transmitter";
             // 
-            // clearToolStripMenuItem
+            // clearAfterSendToolStripMenuItem
             // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            this.clearAfterSendToolStripMenuItem.Checked = true;
+            this.clearAfterSendToolStripMenuItem.CheckOnClick = true;
+            this.clearAfterSendToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.clearAfterSendToolStripMenuItem.Name = "clearAfterSendToolStripMenuItem";
+            this.clearAfterSendToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearAfterSendToolStripMenuItem.Text = "Clear After Send";
             // 
             // endLİneToolStripMenuItem
             // 
             this.endLİneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox2});
+            this.toolStripComboBox_TxEndLine});
             this.endLİneToolStripMenuItem.Name = "endLİneToolStripMenuItem";
-            this.endLİneToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.endLİneToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.endLİneToolStripMenuItem.Text = "End Line";
             // 
-            // toolStripComboBox2
+            // toolStripComboBox_TxEndLine
             // 
-            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.toolStripComboBox2.Items.AddRange(new object[] {
+            this.toolStripComboBox_TxEndLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_TxEndLine.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_TxEndLine.Items.AddRange(new object[] {
             "None",
-            "Both",
-            "New Line",
-            "Carriage Return"});
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 28);
-            this.toolStripComboBox2.DropDownClosed += new System.EventHandler(this.toolStripComboBox2_DropDownClosed);
+            "Both (\\r\\n)",
+            "New Line (\\n)",
+            "Carriage Return (\\r)"});
+            this.toolStripComboBox_TxEndLine.Name = "toolStripComboBox_TxEndLine";
+            this.toolStripComboBox_TxEndLine.Size = new System.Drawing.Size(130, 28);
+            this.toolStripComboBox_TxEndLine.DropDownClosed += new System.EventHandler(this.toolStripComboBox2_DropDownClosed);
+            // 
+            // dataFormatToolStripMenuItem1
+            // 
+            this.dataFormatToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_TxDataFormat});
+            this.dataFormatToolStripMenuItem1.Name = "dataFormatToolStripMenuItem1";
+            this.dataFormatToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.dataFormatToolStripMenuItem1.Text = "Data Format";
+            // 
+            // toolStripComboBox_TxDataFormat
+            // 
+            this.toolStripComboBox_TxDataFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_TxDataFormat.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_TxDataFormat.Items.AddRange(new object[] {
+            "Hex",
+            "Decimal",
+            "Binary",
+            "Char"});
+            this.toolStripComboBox_TxDataFormat.Name = "toolStripComboBox_TxDataFormat";
+            this.toolStripComboBox_TxDataFormat.Size = new System.Drawing.Size(121, 28);
             // 
             // receiverToolStripMenuItem
             // 
             this.receiverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem1,
+            this.clearToolStripMenuItem,
             this.showDataWithToolStripMenuItem,
-            this.dataPositionToolStripMenuItem});
+            this.dataPositionToolStripMenuItem,
+            this.dataFormatToolStripMenuItem});
             this.receiverToolStripMenuItem.Name = "receiverToolStripMenuItem";
             this.receiverToolStripMenuItem.Size = new System.Drawing.Size(88, 25);
             this.receiverToolStripMenuItem.Text = "Receiver";
             // 
-            // clearToolStripMenuItem1
+            // clearToolStripMenuItem
             // 
-            this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
-            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(214, 26);
-            this.clearToolStripMenuItem1.Text = "Clear";
-            this.clearToolStripMenuItem1.Click += new System.EventHandler(this.clearToolStripMenuItem1_Click);
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearToolStripMenuItem.Text = "Clear";
             // 
             // showDataWithToolStripMenuItem
             // 
             this.showDataWithToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
+            this.toolStripComboBox_RxShowDataWith});
             this.showDataWithToolStripMenuItem.Name = "showDataWithToolStripMenuItem";
-            this.showDataWithToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.showDataWithToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.showDataWithToolStripMenuItem.Text = "Show Data With";
             // 
-            // toolStripComboBox1
+            // toolStripComboBox_RxShowDataWith
             // 
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.toolStripComboBox1.Items.AddRange(new object[] {
+            this.toolStripComboBox_RxShowDataWith.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_RxShowDataWith.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_RxShowDataWith.Items.AddRange(new object[] {
             "Always Update",
             "Add To Old Data"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBox_RxShowDataWith.Name = "toolStripComboBox_RxShowDataWith";
+            this.toolStripComboBox_RxShowDataWith.Size = new System.Drawing.Size(121, 28);
             // 
             // dataPositionToolStripMenuItem
             // 
             this.dataPositionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox3});
+            this.toolStripComboBox_RxDataPosition});
             this.dataPositionToolStripMenuItem.Name = "dataPositionToolStripMenuItem";
-            this.dataPositionToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.dataPositionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dataPositionToolStripMenuItem.Text = "Data Position";
             // 
-            // toolStripComboBox3
+            // toolStripComboBox_RxDataPosition
             // 
-            this.toolStripComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.toolStripComboBox3.Items.AddRange(new object[] {
+            this.toolStripComboBox_RxDataPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_RxDataPosition.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_RxDataPosition.Items.AddRange(new object[] {
             "Top",
             "Bottom"});
-            this.toolStripComboBox3.Name = "toolStripComboBox3";
-            this.toolStripComboBox3.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBox_RxDataPosition.Name = "toolStripComboBox_RxDataPosition";
+            this.toolStripComboBox_RxDataPosition.Size = new System.Drawing.Size(121, 28);
+            // 
+            // dataFormatToolStripMenuItem
+            // 
+            this.dataFormatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_RxDataFormat});
+            this.dataFormatToolStripMenuItem.Name = "dataFormatToolStripMenuItem";
+            this.dataFormatToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dataFormatToolStripMenuItem.Text = "Data Format";
+            // 
+            // toolStripComboBox_RxDataFormat
+            // 
+            this.toolStripComboBox_RxDataFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_RxDataFormat.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_RxDataFormat.Items.AddRange(new object[] {
+            "Hex",
+            "Decimal",
+            "Binary",
+            "Char"});
+            this.toolStripComboBox_RxDataFormat.Name = "toolStripComboBox_RxDataFormat";
+            this.toolStripComboBox_RxDataFormat.Size = new System.Drawing.Size(121, 28);
             // 
             // multiplePortToolStripMenuItem
             // 
@@ -592,7 +642,7 @@ namespace ComPort
             this.in1PortsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem1});
             this.in1PortsToolStripMenuItem.Name = "in1PortsToolStripMenuItem";
-            this.in1PortsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.in1PortsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.in1PortsToolStripMenuItem.Text = "2 in 1 Ports";
             // 
             // openToolStripMenuItem1
@@ -644,8 +694,6 @@ namespace ComPort
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximumSize = new System.Drawing.Size(1409, 781);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(825, 439);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -705,16 +753,16 @@ namespace ComPort
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transmitterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearAfterSendToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem endLİneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_TxEndLine;
         private System.Windows.Forms.ToolStripMenuItem receiverToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDataWithToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_RxShowDataWith;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataPositionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox3;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_RxDataPosition;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -727,6 +775,10 @@ namespace ComPort
         private System.Windows.Forms.ToolStripMenuItem multiplePortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem in1PortsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dataFormatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_RxDataFormat;
+        private System.Windows.Forms.ToolStripMenuItem dataFormatToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_TxDataFormat;
     }
 }
 

@@ -32,19 +32,18 @@ namespace ComPort
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Txt1stTextSend = new System.Windows.Forms.TextBox();
-            this.richTextBox_1stTextReceiver = new System.Windows.Forms.RichTextBox();
-            this.Btn1stButtonSend = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Cmb1stComPort = new System.Windows.Forms.ComboBox();
-            this.Cmb1stBaudRate = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar_1stStatusBar = new System.Windows.Forms.ProgressBar();
+            this.Btn1stClose = new System.Windows.Forms.Button();
+            this.Btn1stOpen = new System.Windows.Forms.Button();
             this.Cmb1stEndLine = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Btn1stOpen = new System.Windows.Forms.Button();
-            this.Btn1stClose = new System.Windows.Forms.Button();
-            this.progressBar_1stStatusBar = new System.Windows.Forms.ProgressBar();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.Cmb1stBaudRate = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Cmb1stComPort = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Btn1stButtonSend = new System.Windows.Forms.Button();
+            this.richTextBox_1stTextReceiver = new System.Windows.Forms.RichTextBox();
+            this.Txt1stTextSend = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.progressBar_2ndStatusBar = new System.Windows.Forms.ProgressBar();
             this.Btn2ndClose = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@ namespace ComPort
             this.Btn2ndButtonSend = new System.Windows.Forms.Button();
             this.richTextBox_2ndTextReceiver = new System.Windows.Forms.RichTextBox();
             this.Txt2ndTextSent = new System.Windows.Forms.TextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -113,49 +113,53 @@ namespace ComPort
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1st Com Port";
             // 
-            // Txt1stTextSend
+            // progressBar_1stStatusBar
             // 
-            this.Txt1stTextSend.Location = new System.Drawing.Point(8, 31);
-            this.Txt1stTextSend.Name = "Txt1stTextSend";
-            this.Txt1stTextSend.Size = new System.Drawing.Size(660, 30);
-            this.Txt1stTextSend.TabIndex = 0;
+            this.progressBar_1stStatusBar.Location = new System.Drawing.Point(664, 248);
+            this.progressBar_1stStatusBar.Name = "progressBar_1stStatusBar";
+            this.progressBar_1stStatusBar.Size = new System.Drawing.Size(96, 31);
+            this.progressBar_1stStatusBar.TabIndex = 11;
             // 
-            // richTextBox_1stTextReceiver
+            // Btn1stClose
             // 
-            this.richTextBox_1stTextReceiver.Location = new System.Drawing.Point(8, 67);
-            this.richTextBox_1stTextReceiver.Name = "richTextBox_1stTextReceiver";
-            this.richTextBox_1stTextReceiver.Size = new System.Drawing.Size(752, 174);
-            this.richTextBox_1stTextReceiver.TabIndex = 1;
-            this.richTextBox_1stTextReceiver.Text = "";
-            this.richTextBox_1stTextReceiver.TextChanged += new System.EventHandler(this.richTextBox_1stTextReceiver_TextChanged);
+            this.Btn1stClose.Location = new System.Drawing.Point(588, 247);
+            this.Btn1stClose.Name = "Btn1stClose";
+            this.Btn1stClose.Size = new System.Drawing.Size(75, 33);
+            this.Btn1stClose.TabIndex = 10;
+            this.Btn1stClose.Text = "Close";
+            this.Btn1stClose.UseVisualStyleBackColor = true;
+            this.Btn1stClose.Click += new System.EventHandler(this.Btn1stClose_Click);
             // 
-            // Btn1stButtonSend
+            // Btn1stOpen
             // 
-            this.Btn1stButtonSend.Location = new System.Drawing.Point(674, 30);
-            this.Btn1stButtonSend.Name = "Btn1stButtonSend";
-            this.Btn1stButtonSend.Size = new System.Drawing.Size(86, 30);
-            this.Btn1stButtonSend.TabIndex = 2;
-            this.Btn1stButtonSend.Text = "Send";
-            this.Btn1stButtonSend.UseVisualStyleBackColor = true;
-            this.Btn1stButtonSend.Click += new System.EventHandler(this.Btn1stButtonSend_Click);
+            this.Btn1stOpen.Location = new System.Drawing.Point(513, 247);
+            this.Btn1stOpen.Name = "Btn1stOpen";
+            this.Btn1stOpen.Size = new System.Drawing.Size(75, 33);
+            this.Btn1stOpen.TabIndex = 9;
+            this.Btn1stOpen.Text = "Open";
+            this.Btn1stOpen.UseVisualStyleBackColor = true;
+            this.Btn1stOpen.Click += new System.EventHandler(this.Btn1stOpen_Click);
             // 
-            // label1
+            // Cmb1stEndLine
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 251);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Com Port:";
+            this.Cmb1stEndLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb1stEndLine.FormattingEnabled = true;
+            this.Cmb1stEndLine.Items.AddRange(new object[] {
+            "WriteLine",
+            "Write"});
+            this.Cmb1stEndLine.Location = new System.Drawing.Point(400, 249);
+            this.Cmb1stEndLine.Name = "Cmb1stEndLine";
+            this.Cmb1stEndLine.Size = new System.Drawing.Size(100, 31);
+            this.Cmb1stEndLine.TabIndex = 8;
             // 
-            // Cmb1stComPort
+            // label3
             // 
-            this.Cmb1stComPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cmb1stComPort.FormattingEnabled = true;
-            this.Cmb1stComPort.Location = new System.Drawing.Point(85, 247);
-            this.Cmb1stComPort.Name = "Cmb1stComPort";
-            this.Cmb1stComPort.Size = new System.Drawing.Size(77, 31);
-            this.Cmb1stComPort.TabIndex = 4;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(326, 253);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "End Line:";
             // 
             // Cmb1stBaudRate
             // 
@@ -181,57 +185,49 @@ namespace ComPort
             this.label2.TabIndex = 5;
             this.label2.Text = "Baud Rate:";
             // 
-            // Cmb1stEndLine
+            // Cmb1stComPort
             // 
-            this.Cmb1stEndLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cmb1stEndLine.FormattingEnabled = true;
-            this.Cmb1stEndLine.Items.AddRange(new object[] {
-            "WriteLine",
-            "Write"});
-            this.Cmb1stEndLine.Location = new System.Drawing.Point(400, 249);
-            this.Cmb1stEndLine.Name = "Cmb1stEndLine";
-            this.Cmb1stEndLine.Size = new System.Drawing.Size(100, 31);
-            this.Cmb1stEndLine.TabIndex = 8;
+            this.Cmb1stComPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb1stComPort.FormattingEnabled = true;
+            this.Cmb1stComPort.Location = new System.Drawing.Point(85, 247);
+            this.Cmb1stComPort.Name = "Cmb1stComPort";
+            this.Cmb1stComPort.Size = new System.Drawing.Size(77, 31);
+            this.Cmb1stComPort.TabIndex = 4;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(326, 253);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 23);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "End Line:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Com Port:";
             // 
-            // Btn1stOpen
+            // Btn1stButtonSend
             // 
-            this.Btn1stOpen.Location = new System.Drawing.Point(513, 247);
-            this.Btn1stOpen.Name = "Btn1stOpen";
-            this.Btn1stOpen.Size = new System.Drawing.Size(75, 33);
-            this.Btn1stOpen.TabIndex = 9;
-            this.Btn1stOpen.Text = "Open";
-            this.Btn1stOpen.UseVisualStyleBackColor = true;
-            this.Btn1stOpen.Click += new System.EventHandler(this.Btn1stOpen_Click);
+            this.Btn1stButtonSend.Location = new System.Drawing.Point(674, 30);
+            this.Btn1stButtonSend.Name = "Btn1stButtonSend";
+            this.Btn1stButtonSend.Size = new System.Drawing.Size(86, 30);
+            this.Btn1stButtonSend.TabIndex = 2;
+            this.Btn1stButtonSend.Text = "Send";
+            this.Btn1stButtonSend.UseVisualStyleBackColor = true;
+            this.Btn1stButtonSend.Click += new System.EventHandler(this.Btn1stButtonSend_Click);
             // 
-            // Btn1stClose
+            // richTextBox_1stTextReceiver
             // 
-            this.Btn1stClose.Location = new System.Drawing.Point(588, 247);
-            this.Btn1stClose.Name = "Btn1stClose";
-            this.Btn1stClose.Size = new System.Drawing.Size(75, 33);
-            this.Btn1stClose.TabIndex = 10;
-            this.Btn1stClose.Text = "Close";
-            this.Btn1stClose.UseVisualStyleBackColor = true;
-            this.Btn1stClose.Click += new System.EventHandler(this.Btn1stClose_Click);
+            this.richTextBox_1stTextReceiver.Location = new System.Drawing.Point(16, 67);
+            this.richTextBox_1stTextReceiver.Name = "richTextBox_1stTextReceiver";
+            this.richTextBox_1stTextReceiver.Size = new System.Drawing.Size(752, 174);
+            this.richTextBox_1stTextReceiver.TabIndex = 1;
+            this.richTextBox_1stTextReceiver.Text = "";
+            this.richTextBox_1stTextReceiver.TextChanged += new System.EventHandler(this.richTextBox_1stTextReceiver_TextChanged);
             // 
-            // progressBar_1stStatusBar
+            // Txt1stTextSend
             // 
-            this.progressBar_1stStatusBar.Location = new System.Drawing.Point(664, 248);
-            this.progressBar_1stStatusBar.Name = "progressBar_1stStatusBar";
-            this.progressBar_1stStatusBar.Size = new System.Drawing.Size(96, 31);
-            this.progressBar_1stStatusBar.TabIndex = 11;
-            // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            this.Txt1stTextSend.Location = new System.Drawing.Point(8, 31);
+            this.Txt1stTextSend.Name = "Txt1stTextSend";
+            this.Txt1stTextSend.Size = new System.Drawing.Size(660, 30);
+            this.Txt1stTextSend.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -371,6 +367,10 @@ namespace ComPort
             this.Txt2ndTextSent.Name = "Txt2ndTextSent";
             this.Txt2ndTextSent.Size = new System.Drawing.Size(660, 30);
             this.Txt2ndTextSent.TabIndex = 0;
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // serialPort2
             // 
